@@ -36,8 +36,8 @@ proc initRedisPool*(cfg: Config) {.async.} =
     await migrate("oldFrosty", "*")
     await migrate("userBuckets", "p:")
 
-    pool.withAcquire(r):
-      await r.configSet("hash-max-ziplist-entries", "1000")
+    # pool.withAcquire(r):
+    #   await r.configSet("hash-max-ziplist-entries", "1000")
 
   except OSError:
     stdout.write "Failed to connect to Redis.\n"
